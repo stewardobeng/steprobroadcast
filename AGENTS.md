@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Campaign payload validation lives in src/lib/campaign/schema.ts and is shared by the form and the server function — keeps client and server rules identical.
+- Webhook calls happen only in an admin-checked server function reading N8N_WEBHOOK_URL (optional N8N_WEBHOOK_SECRET) from env — the webhook must never be exposed to the browser.
+- Admin access uses public.user_roles + has_role(); never store roles elsewhere.
