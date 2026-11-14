@@ -115,7 +115,7 @@ function Composer() {
       const n = [...ps];
       const j = i + d;
       if (j < 0 || j >= n.length) return ps;
-      [n[i], n[j]] = [n[j], n[i]];
+      const a = n[i]!; n[i] = n[j]!; n[j] = a;
       return n;
     });
 
@@ -191,7 +191,7 @@ function Composer() {
             <h2 className="font-display text-lg font-semibold">Message parts</h2>
             <span className="text-xs text-muted-foreground">Sent in this order</span>
           </div>
-          {errors.parts && <p className="text-sm text-destructive">{errors.parts}</p>}
+          {errors["parts"] && <p className="text-sm text-destructive">{errors["parts"]}</p>}
           {parts.map((p, i) => {
             const M = TYPE_META[p.type];
             return (
@@ -288,7 +288,7 @@ function Composer() {
   );
 }
 
-function TokenField(props: { label: string; value: string; onChange: (v: string) => void; disabled?: boolean; multiline?: boolean; error?: string }) {
+function TokenField(props: { label: string; value: string; onChange: (v: string) => void; disabled?: boolean; multiline?: boolean; error?: string | undefined }) {
   const insert = () => props.onChange(`${props.value}{{name}}`);
   return (
     <div className="space-y-1">
@@ -354,7 +354,7 @@ function ResultPanel({ result, onNew, onDismiss }: { result: SubmitResult; onNew
       <XCircle className="h-6 w-6 shrink-0 text-destructive" />
       <div className="flex-1 text-sm">
         <p className="font-semibold">
-          {network ? "We couldn't confirm the submission" : result.kind === "config" ? "Sending isn't set up" : `The workflow rejected the request (${result.status})`}
+          {network ? "We couldn't confirm the submission" : result.kind === "config" ? "Sending isn't set up" : `The workflow rejected the request (${"status" in result ? result.status : ""})`}
         </p>
         <p className="mt-1 break-words text-muted-foreground">{result.message}</p>
         {network && <p className="mt-1 text-muted-foreground">The form is locked to avoid sending twice. Check with the workflow owner, then start a new campaign if needed.</p>}
