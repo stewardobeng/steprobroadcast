@@ -15,6 +15,20 @@
       "when": 1794664624986,
       "tag": "0001_add_campaign_history",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794698256117,
+      "tag": "0002_admin_contacts_and_groups",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794698386765,
+      "tag": "0003_contact_save_optional_ids",
+      "breakpoints": true
     }
   ]
 }

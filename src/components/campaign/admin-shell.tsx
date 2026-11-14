@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
-import { History, LayoutDashboard, LogOut, Menu, MessageSquareText, Plus, XCircle } from "lucide-react";
+import { History, LayoutDashboard, LogOut, Menu, MessageSquareText, Plus, Users, XCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAdminSession } from "@/hooks/use-admin-session";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const NAV = [
   { to: "/dashboard", label: "New campaign", icon: LayoutDashboard },
   { to: "/campaigns", label: "Campaign history", icon: History },
+  { to: "/contacts", label: "Manage contacts & groups", icon: Users },
 ] as const;
 
 function Brand() {
@@ -40,8 +41,8 @@ function Navigation({ onNavigate }: { onNavigate?: () => void }) {
           inactiveProps={{ className: "text-sidebar-foreground/65 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground" }}
           className="flex h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium transition-colors"
         >
-          <item.icon className="h-[18px] w-[18px]" />
-          {item.label}
+          <item.icon className="h-[18px] w-[18px] shrink-0" />
+          <span className="min-w-0 leading-snug">{item.label}</span>
         </Link>
       ))}
     </nav>

@@ -50,6 +50,90 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_group_members: {
+        Row: {
+          contact_id: string
+          group_id: string
+        }
+        Insert: {
+          contact_id: string
+          group_id: string
+        }
+        Update: {
+          contact_id?: string
+          group_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contact_group_members_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_group_members_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "contact_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      contact_groups: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contacts: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          notes: string
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string
+          id?: string
+          name: string
+          notes?: string
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          notes?: string
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -79,6 +163,26 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      save_contact: {
+        Args: {
+          _email?: string
+          _groups?: string[]
+          _id?: string
+          _name?: string
+          _notes?: string
+          _phone?: string
+        }
+        Returns: string
+      }
+      save_contact_group: {
+        Args: {
+          _contacts?: string[]
+          _description?: string
+          _id?: string
+          _name?: string
+        }
+        Returns: string
       }
     }
     Enums: {
