@@ -8,6 +8,13 @@
       "when": 1794651917669,
       "tag": "0000_user_roles",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794664624986,
+      "tag": "0001_add_campaign_history",
+      "breakpoints": true
     }
   ]
 }

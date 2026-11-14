@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      campaigns: {
+        Row: {
+          campaign_id: string
+          created_at: string
+          created_by: string
+          error_message: string | null
+          id: string
+          parts: Json
+          response_status: number | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          campaign_id: string
+          created_at?: string
+          created_by: string
+          error_message?: string | null
+          id?: string
+          parts: Json
+          response_status?: number | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          campaign_id?: string
+          created_at?: string
+          created_by?: string
+          error_message?: string | null
+          id?: string
+          parts?: Json
+          response_status?: number | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
