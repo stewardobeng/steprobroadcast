@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
-import { History, LayoutDashboard, LogOut, Menu, MessageSquareText, Plus, Radio, XCircle } from "lucide-react";
+import { History, LayoutDashboard, LogOut, Menu, MessageSquareText, Plus, XCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAdminSession } from "@/hooks/use-admin-session";
 import { Button } from "@/components/ui/button";
@@ -51,13 +51,6 @@ function Navigation({ onNavigate }: { onNavigate?: () => void }) {
 function SidebarFooter({ email, onSignOut }: { email: string | null | undefined; onSignOut: () => void | Promise<void> }) {
   return (
     <div className="mt-auto pt-8">
-      <div className="mb-4 rounded-xl border border-sidebar-border bg-sidebar-accent/40 p-3.5">
-        <div className="flex items-center gap-2 text-xs font-medium">
-          <Radio className="h-3.5 w-3.5 text-sidebar-primary" />
-          WhatsApp workflow
-        </div>
-        <p className="mt-1.5 text-[11px] leading-relaxed text-sidebar-foreground/50">Messages are delivered through your connected workflow.</p>
-      </div>
       <div className="flex items-center gap-3 border-t border-sidebar-border pt-4">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sidebar-accent text-xs font-semibold uppercase">
           {email?.slice(0, 2) || "AD"}
